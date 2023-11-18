@@ -63,7 +63,7 @@ public class PusProcessor200001 implements PusProcessor {
 
 			pusAppData.setValues(report);
 
-			PusPacket tm = PusPacketCreator.createTm().apid(apid).st(200).sst(2).did(sid).time(timeSource.getTime())
+			PusPacket tm = PusPacketCreator.tm().apid(apid).st(200).sst(2).did(sid).time(timeSource.getTime())
 					.appData(pusAppData).build();
 			d.send(tm);
 

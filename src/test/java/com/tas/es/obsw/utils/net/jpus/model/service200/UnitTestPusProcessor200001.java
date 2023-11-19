@@ -9,7 +9,7 @@ import com.tas.es.obsw.utils.net.jpus.PusException;
 import com.tas.es.obsw.utils.net.jpus.model.PusAppData;
 import com.tas.es.obsw.utils.net.jpus.model.PusCucTime43;
 import com.tas.es.obsw.utils.net.jpus.model.PusPacket;
-import com.tas.es.obsw.utils.net.jpus.model.processing.PusProcessingStage;
+import com.tas.es.obsw.utils.net.jpus.model.PusProcessingStage;
 import com.tas.es.obsw.utils.net.jpus.model.service200.factory.PusAppData200;
 import com.tas.es.obsw.utils.net.jpus.model.service200.factory.PusAppData200001;
 import com.tas.es.obsw.utils.net.jpus.model.service200.factory.PusAppData200002;

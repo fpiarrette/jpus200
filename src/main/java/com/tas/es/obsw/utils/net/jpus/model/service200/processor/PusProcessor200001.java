@@ -3,6 +3,7 @@ package com.tas.es.obsw.utils.net.jpus.model.service200.processor;
 import java.util.Map;
 
 import com.tas.es.obsw.utils.net.jpus.PusException;
+import com.tas.es.obsw.utils.net.jpus.PusExceptionStageError;
 import com.tas.es.obsw.utils.net.jpus.model.PusAppData;
 import com.tas.es.obsw.utils.net.jpus.model.PusPacket;
 import com.tas.es.obsw.utils.net.jpus.model.PusPacketDataFieldHeaderTc;
@@ -24,10 +25,6 @@ public class PusProcessor200001 implements PusProcessor {
 			return false;
 		}
 
-		if (!stage.equals(PusProcessingStage.EXECUTION)) {
-			return false;
-		}
-
 		PusPacketDataFieldHeaderTc dataFieldHeader = (PusPacketDataFieldHeaderTc) p.getDataField().getHeader();
 
 		return dataFieldHeader.getServiceType().getValue() == 200
@@ -38,37 +35,41 @@ public class PusProcessor200001 implements PusProcessor {
 	public boolean execute(PusProcessingStage stage, PusPacket p, PusProcessorDelegate d, PusTimeSource timeSource)
 			throws PusException {
 
-		if (!p.getHeader().isTc()) {
-			throw new PusException("TM PUS packet not supported");
-		}
-
-		if (!stage.equals(PusProcessingStage.EXECUTION)) {
-			throw new PusException("Stage not supported");
-		}
-
-		PusPacketDataFieldHeaderTc dataFieldHeader = (PusPacketDataFieldHeaderTc) p.getDataField().getHeader();
-
-		if (dataFieldHeader.getServiceType().getValue() != 200 || dataFieldHeader.getServiceSubType().getValue() != 1) {
-			throw new PusException("PUS service not supported");
+		if (!supports(stage, p)) {
+			throw new PusExceptionStageError("TM PUS packet not supported");
 		}
 
 		int apid = p.getHeader().getApplicationProcessId();
 		int sid = ((PusPacketDataFieldHeaderTc) p.getDataField().getHeader()).getSourceId().getValue();
 
-		try {
+		switch (stage) {
+		case ACCEPTANCE:
+			break;
+		case START:
 
-			Map<String, String> report = LsCpu.instance.getReport();
+			break;
+		case EXECUTION:
 
-			PusAppData pusAppData = new PusAppData200002();
+			try {
 
-			pusAppData.setValues(report);
+				Map<String, String> report = LsCpu.instance.getReport();
 
-			PusPacket tm = PusPacketCreator.tm().apid(apid).st(200).sst(2).did(sid).time(timeSource.getTime())
-					.appData(pusAppData).build();
-			d.send(tm);
+				PusAppData pusAppData = new PusAppData200002();
 
-		} catch (LsCpuException e) {
-			return false;
+				pusAppData.setValues(report);
+
+				PusPacket tm = PusPacketCreator.tm().apid(apid).st(200).sst(2).did(sid).time(timeSource.getTime())
+						.appData(pusAppData).build();
+				d.send(tm);
+
+			} catch (LsCpuException e) {
+				throw new PusExceptionStageError(e);
+			}
+
+			break;
+		case FINISH:
+			break;
+
 		}
 
 		return true;

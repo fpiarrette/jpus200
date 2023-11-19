@@ -75,11 +75,6 @@ public class PusProcessor200001 implements PusProcessor {
 	}
 
 	@Override
-	public int getOrder() {
-		return 5;
-	}
-
-	@Override
 	public String getName() {
 		return "CPU management: supported by lscpu command";
 	}

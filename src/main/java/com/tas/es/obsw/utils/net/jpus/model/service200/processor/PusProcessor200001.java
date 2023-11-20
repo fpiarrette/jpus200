@@ -8,9 +8,9 @@ import com.tas.es.obsw.utils.net.jpus.model.PusAppData;
 import com.tas.es.obsw.utils.net.jpus.model.PusPacket;
 import com.tas.es.obsw.utils.net.jpus.model.PusPacketDataFieldHeaderTc;
 import com.tas.es.obsw.utils.net.jpus.model.PusProcessingStage;
-import com.tas.es.obsw.utils.net.jpus.model.processing.PusProcessor;
-import com.tas.es.obsw.utils.net.jpus.model.processing.PusProcessorDelegate;
-import com.tas.es.obsw.utils.net.jpus.model.processing.PusTimeSource;
+import com.tas.es.obsw.utils.net.jpus.model.ext.processing.PusProcessor;
+import com.tas.es.obsw.utils.net.jpus.model.ext.processing.PusProcessorDelegate;
+import com.tas.es.obsw.utils.net.jpus.model.ext.processing.PusTimeSource;
 import com.tas.es.obsw.utils.net.jpus.model.service200.factory.PusAppData200002;
 import com.tas.es.obsw.utils.net.jpus.utils.PusPacketCreator;
 

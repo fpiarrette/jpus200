@@ -1,7 +1,7 @@
 package com.tas.es.obsw.utils.net.jpus.model.service200;
 
 import com.tas.es.obsw.utils.net.jpus.model.PusCucTime43;
-import com.tas.es.obsw.utils.net.jpus.model.processing.PusTimeSource;
+import com.tas.es.obsw.utils.net.jpus.model.ext.processing.PusTimeSource;
 
 public class TestPusTimeSource implements PusTimeSource {
 

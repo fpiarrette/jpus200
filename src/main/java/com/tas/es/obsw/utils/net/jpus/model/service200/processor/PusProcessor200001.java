@@ -32,7 +32,7 @@ public class PusProcessor200001 implements PusProcessor {
 	}
 
 	@Override
-	public boolean execute(PusProcessingStage stage, PusPacket p, PusProcessorDelegate d, PusTimeSource timeSource)
+	public void execute(PusProcessingStage stage, PusPacket p, PusProcessorDelegate d, PusTimeSource timeSource)
 			throws PusException {
 
 		if (!supports(stage, p)) {
@@ -72,7 +72,6 @@ public class PusProcessor200001 implements PusProcessor {
 
 		}
 
-		return true;
 	}
 
 	@Override

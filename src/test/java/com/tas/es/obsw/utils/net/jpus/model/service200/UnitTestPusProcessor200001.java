@@ -54,9 +54,7 @@ public class UnitTestPusProcessor200001 {
 
 			timeSource.setTime(new PusCucTime43(0, 0));
 
-			boolean result = p.execute(PusProcessingStage.EXECUTION, tc, delegate, timeSource);
-
-			Assert.assertTrue("Processor result", result);
+			p.execute(PusProcessingStage.EXECUTION, tc, delegate, timeSource);
 
 			PusPacket tm = delegate.getPacket();
 

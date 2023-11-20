@@ -8,9 +8,9 @@ import com.tas.es.obsw.utils.net.jpus.model.PusAppData;
 import com.tas.es.obsw.utils.net.jpus.model.PusPacket;
 import com.tas.es.obsw.utils.net.jpus.model.PusPacketDataFieldHeaderTc;
 import com.tas.es.obsw.utils.net.jpus.model.PusProcessingStage;
-import com.tas.es.obsw.utils.net.jpus.model.processing.PusProcessor;
-import com.tas.es.obsw.utils.net.jpus.model.processing.PusProcessorDelegate;
-import com.tas.es.obsw.utils.net.jpus.model.processing.PusTimeSource;
+import com.tas.es.obsw.utils.net.jpus.model.ext.processing.PusProcessor;
+import com.tas.es.obsw.utils.net.jpus.model.ext.processing.PusProcessorDelegate;
+import com.tas.es.obsw.utils.net.jpus.model.ext.processing.PusTimeSource;
 import com.tas.es.obsw.utils.net.jpus.model.service200.factory.PusAppData200002;
 import com.tas.es.obsw.utils.net.jpus.utils.PusPacketCreator;
 
@@ -32,7 +32,7 @@ public class PusProcessor200001 implements PusProcessor {
 	}
 
 	@Override
-	public boolean execute(PusProcessingStage stage, PusPacket p, PusProcessorDelegate d, PusTimeSource timeSource)
+	public void execute(PusProcessingStage stage, PusPacket p, PusProcessorDelegate d, PusTimeSource timeSource)
 			throws PusException {
 
 		if (!supports(stage, p)) {
@@ -72,7 +72,6 @@ public class PusProcessor200001 implements PusProcessor {
 
 		}
 
-		return true;
 	}
 
 	@Override

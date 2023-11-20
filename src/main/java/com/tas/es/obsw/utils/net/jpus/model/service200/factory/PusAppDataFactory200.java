@@ -11,7 +11,7 @@ import com.tas.es.obsw.utils.net.jpus.model.PusPacketDataFieldHeader;
 import com.tas.es.obsw.utils.net.jpus.model.PusServicePair;
 import com.tas.es.obsw.utils.net.jpus.model.PusServiceSubType;
 import com.tas.es.obsw.utils.net.jpus.model.PusServiceType;
-import com.tas.es.obsw.utils.net.jpus.model.services.PusAppDataFactory;
+import com.tas.es.obsw.utils.net.jpus.model.ext.appdata.PusAppDataFactory;
 
 public class PusAppDataFactory200 implements PusAppDataFactory {
 
